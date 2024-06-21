@@ -1,0 +1,156 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>\
+    <style>
+   .footer-border {
+        border-top-style: double; /* 双线边框 */
+        border-top-width: 4px; /* 边框宽度 */
+        border-top-color: #666; /* 边框颜色 */
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 80px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-size: 0.875rem; /* 14px */
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 8px 12px; /* Reduced padding */
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover a {
+        color: #333333;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+            .header-border {
+        border-bottom-width: 2px; /* 边框宽度 */
+        border-bottom-color: #666; /* 边框颜色 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+  
+      <div class="min-h-screen bg-white text-zinc-900 dark:text-zinc-100">
+        <header class="bg-white dark:bg-zinc-800 relative header-border">
+          <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                  <img src="logo文字.png" alt="杭州电子科技大学|传播学系" width="550px">
+                </div>
+                <nav class="flex space-x-2 items-center w-full justify-between mt-4">
+                  <div class="dropdown">
+                    <a href="#" class="text-sm hover:underline">本系概览 ◆</a>
+                  </div>
+                  <div class="dropdown">
+                    <a href="#" class="text-sm hover:underline">新闻动态 ▾</a>
+                    <div class="dropdown-content">
+                      <a href="#">新闻资讯</a>
+                      <a href="#">通知公告</a>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <a href="#" class="text-sm hover:underline">师资队伍 ▾</a>
+                    <div class="dropdown-content">
+                      <a href="#">教师简介</a>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                  <a href="#" class="text-sm hover:underline">教学内容 ▾</a>
+                  <div class="dropdown-content">
+                    <a href="#">课程设置</a>
+                    <a href="#">理念目标</a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <a href="#" class="text-sm hover:underline">教学成果 ▾</a>
+                  <div class="dropdown-content">
+                    <a href="#">学术成就</a>
+                    <a href="#">就业发展</a>
+                    <a href="#">学生作品</a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <a href="#" class="text-sm hover:underline">校园生活 ▾</a>
+                  <div class="dropdown-content">
+                    <a href="#">系内活动</a>
+                    <a href="#">师生生活</a>
+                </div>
+                </nav>
+                <div class="absolute top-0 right-16 mt-2 mr-4">
+                  <div class="relative">
+                    <input type="text" class="p-1 bg-transparent border-b-2 border-[#9a9a9a] focus:outline-none box-shadow text-xs h-6 w-64">
+                    <button class="absolute right-0 top-0 h-full p-1 bg-transparent">
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute top-0 right-8 mt-3 mr-5">
+                <button>
+                  <img src="搜索.png" alt="搜索标志" width="30px" >
+                </button>
+              <div class="border-b-2 border-[#9a9a9a] mt-[-16px]"></div>
+            </header>
+  <main class="flex-grow container mx-auto p-4">
+    <div class="mb-4">
+      <a href="#" class="text-zinc-600 hover:underline">返回</a>
+    </div>
+    <div class="mb-4">
+      <input type="text" placeholder="请输入你需要搜索的内容" class="w-full border p-2 rounded">
+    </div>
+    <ul class="space-y-2">
+      <li class="border p-2 rounded">奖学金评选结果</li>
+      <li class="border p-2 rounded">五一假期安排</li>
+      <li class="border p-2 rounded">研究生复试名单</li>
+    </ul>
+    <div class="mt-8">
+      <br><br><br>
+      <img src="HTC_Heritage Library_ABC Library 02Element ps2.png" alt="decorative image" class="w-full">
+    </div>
+  </main>
+  
+  <footer class="bg-white dark:bg-zinc-800 shadow mt-8 footer-border" style="height: 160px;">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-8">
+      <div class="flex items-center space-x-4">
+        <div style="position: absolute;top: 47rem; left: 14rem;">
+        <img src="传播系网站.png" alt="QR Code" class="w-24 h-24">
+        <p style="font-size: 14px;">杭电传播公众号</p>
+      </div>
+    </div>
+    <div style="position: absolute;top: 47rem; left: 30rem;">
+      <p>联系我们</p>
+      <p>地址：杭州市钱塘区白杨街道2号大街1158号</p>
+      <p>电话：0571-86878505</p>
+      <p>邮箱：xwcb@hdu.edu.cn</p>
+    </div>
+    <div style="position: absolute;top: 47rem; left: 60rem;">
+      <p>相关链接</p>
+      <a href="https://www.hdu.edu.cn/main.htm">杭州电子科技大学</a><br>
+      <a href="https://syxy.hdu.edu.cn/main.htm">人文艺术与数字媒体学院</a>
+    </div>
+    <div>
+      <a href="意见反馈页.html" style="position: absolute;top: 47rem; left: 92rem; font-weight:bold;">▸意见反馈通道</a>
+    </div>
+  </footer>
+</div>
+  </body>
+</html>

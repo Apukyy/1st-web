@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+            .sidebar {
+        width: 20%; /* 减小侧边栏宽度 */
+      }
+
+      .main-content {
+        width: 70%; /* 减小正文栏宽度 */
+      }
+
+      .separator {
+        width: 1px;
+        background-color:#666666;
+        margin: 0 20px; /* 增加分隔线两边的间隔 */
+      }
+
+      .footer-border {
+        border-top-style: double; /* 双线边框 */
+        border-top-width: 4px; /* 边框宽度 */
+        border-top-color: #666; /* 边框颜色 */
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 80px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-size: 0.875rem; /* 14px */
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 8px 12px; /* Reduced padding */
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover a {
+        color: #333333;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .header-border {
+        border-bottom-width: 2px; /* 边框宽度 */
+        border-bottom-color: #666; /* 边框颜色 */
+      }
+
+    </style>
+</head>
+<body>
+  <div class="min-h-screen bg-white text-zinc-900 dark:text-zinc-100">
+<header class="bg-white dark:bg-zinc-800 relative header-border">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <img src="logo文字.png" alt="杭州电子科技大学|传播学系" width="550px">
+        </div>
+        <nav class="flex space-x-2 items-center w-full justify-between mt-4">
+          <div class="dropdown">
+            <a href="#" class="text-sm hover:underline">本系概览 ◆</a>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="text-sm hover:underline">新闻动态 ▾</a>
+            <div class="dropdown-content">
+              <a href="#">新闻资讯</a>
+              <a href="#">通知公告</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="text-sm hover:underline">师资队伍 ▾</a>
+            <div class="dropdown-content">
+              <a href="#">教师简介</a>
+            </div>
+          </div>
+          <div class="dropdown">
+          <a href="#" class="text-sm hover:underline">教学内容 ▾</a>
+          <div class="dropdown-content">
+            <a href="#">课程设置</a>
+            <a href="#">理念目标</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#" class="text-sm hover:underline">教学成果 ▾</a>
+          <div class="dropdown-content">
+            <a href="#">学术成就</a>
+            <a href="#">就业发展</a>
+            <a href="#">学生作品</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#" class="text-sm hover:underline">校园生活 ▾</a>
+          <div class="dropdown-content">
+            <a href="#">系内活动</a>
+            <a href="#">师生生活</a>
+        </div>
+        </nav>
+        <div class="absolute top-0 right-16 mt-2 mr-4">
+          <div class="relative">
+            <input type="text" class="p-1 bg-transparent border-b-2 border-[#9a9a9a] focus:outline-none box-shadow text-xs h-6 w-64">
+            <button class="absolute right-0 top-0 h-full p-1 bg-transparent">
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="absolute top-0 right-8 mt-3 mr-5">
+        <button>
+          <img src="搜索.png" alt="搜索标志" width="30px" >
+        </button>
+      <div class="border-b-2 border-[#9a9a9a] mt-[-16px]"></div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row space-x-0 md:space-x-8">
+      <aside class="sidebar w-full md:w-1/4 mb-8 md:mb-0">
+      <div class="bg-white dark:bg-zinc-800 shadow p-4 space-y-4">
+        <div class="font-bold text-lg">新闻动态</div>
+        <ul class="space-y-2">
+          <li><a href="#" class="block p-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600">新闻资讯</a></li>
+          <li><a href="#" class="block p-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600">通知公告</a></li>
+          <li><a href="#" class="block p-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600">教师通知</a></li>
+          <li><a href="#" class="block p-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600">学生通知</a></li>
+          <li><a href="#" class="block p-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600">职工通知</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="separator hidden md:block"></div>
+
+    <main class="main-content w-full md:w-3/4">
+      <div class="bg-white dark:bg-zinc-800 shadow p-4 overflow-hidden">
+        <div class="border-b pb-4 mb-4">
+          <h1 class="text-2xl font-bold">教师通知</h1>
+          <nav class="text-sm text-zinc-600 dark:text-zinc-400">
+            <a href="#" class="hover:underline">首页</a> / <a href="#" class="hover:underline">新闻动态</a> / 教师通知
+          </nav>
+        </div>
+        <article class="h-96 overflow-y-auto">
+          <h2 class="text-xl font-bold mb-2">美正育人 | 混合型一流课程建设分享</h2>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">2024.4.12</p>
+          <p class="mb-4">4月10日下午，由人文艺术与数字媒体学院、法学院举办的“混合型一流课程建设分享”讲座活动在九教模拟法庭举行。法学院社会学系副主任徐琳老师担任主讲人，学院多名教师参加本次讲座。</p>
+          <p class="mb-4">徐琳老师指出“教育数字化已成为教育的重要趋势”，并阐述了混合教学的优势。混合教学既具备线上教学的异步性、留痕性、数字化、可视化反馈等特点，可以培养学生的自主学习能力，也具备线下教学在场感较好的优势，为学生提供了更为真实的学习体验。</p>
+          <p class="mb-4">徐琳老师结合自身的教学经验，分享了省级线上线下混合式一流课程《心理学导论》的课程建设心得。心理学导论2011年首次开课，至今已有20多轮教学。自2018年起，开始利用在线平台与学生进行互动，并开始混合教学的尝试，取得了显著效果。2021年开始与普通心理学、社会心理学等课程联络，进行了多次课间点滴优化的教学改革与实践。2022年被认定为省级线上线下一流混合课程。基于这些实践，徐琳老师总结了一流课程建设的经验是“早准备，多积累，多了解”。</p>
+        </article>
+        <div class="flex justify-between items-center mt-4">
+          <button class="p-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600">上一页</button>
+          <button class="p-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600">下一页</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="bg-white dark:bg-zinc-800 shadow mt-8 footer-border" style="height: 160px;">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-8">
+      <div class="flex items-center space-x-4">
+        <div style="position: absolute;top: 47rem; left: 14rem;">
+        <img src="传播系网站.png" alt="QR Code" class="w-24 h-24">
+        <p style="font-size: 14px;">杭电传播公众号</p>
+      </div>
+    </div>
+    <div style="position: absolute;top: 47rem; left: 30rem;">
+      <p>联系我们</p>
+      <p>地址：杭州市钱塘区白杨街道2号大街1158号</p>
+      <p>电话：0571-86878505</p>
+      <p>邮箱：xwcb@hdu.edu.cn</p>
+    </div>
+    <div style="position: absolute;top: 47rem; left: 60rem;">
+      <p>相关链接</p>
+      <a href="https://www.hdu.edu.cn/main.htm">杭州电子科技大学</a><br>
+      <a href="https://syxy.hdu.edu.cn/main.htm">人文艺术与数字媒体学院</a>
+    </div>
+    <div>
+      <a href="意见反馈页.html" style="position: absolute;top: 47rem; left: 92rem; font-weight:bold;">▸意见反馈通道</a>
+    </div>
+  </footer>
+</div>
+  </body>
+</html>

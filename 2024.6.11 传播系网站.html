@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        height: 100vh; /* 设置body高度为视口高度的100% */
+      }
+      .group:hover .group-hover\:block,
+      .group:focus-within .group-hover\:block,
+      .group .submenu:hover,
+      .group:hover .submenu {
+        display: block;
+      }
+      .slider-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* 防止图片溢出 */
+        height: 48rem; /* 设置轮播容器的高度 */
+      }
+
+      .slider-slide {
+        width: 100%; /* 设置图片宽度为100% */
+        height: 100%; /* 设置图片高度为100% */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity 1s; /* 添加了透明度的过渡效果 */
+        opacity: 0; /* 初始不透明度为0 */
+      }
+
+      .slider-button {
+        background-size: 80px; /* 确保背景图片适应按钮大小 */
+        background-repeat: no-repeat; /* 不重复背景图片 */
+        background-position: center; /* 背景图片居中 */
+        opacity: 0; /* 默认不透明度 */
+        transition: opacity 0.3s; /* 不透明度变化动画 */
+        cursor: pointer; /* 更改鼠标指针样式以提示可点击 */
+      }
+
+      .slider-button:hover {
+        opacity: 0.3;
+      }
+
+      .slider-container:hover .slider-button {
+        opacity: 0.8;
+      }
+
+      .slider-button.left-0 {
+        background-image: linear-gradient(to right, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      }
+
+      .slider-button.right-0 {
+        background-image: linear-gradient(to left, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+      }
+
+      .slider-button.left-0,
+      .slider-button.right-0 {
+        width: 150px; /* 自定义宽度 */
+        height: 100%; /* 高度和图片等高 */
+      }
+
+      #slider-image {
+        width: 100%;
+        height: 48rem;
+        object-fit: cover;
+        transition: opacity 1s; /* 添加了透明度的过渡效果 */
+        opacity: 0; /* 初始不透明度为0 */
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 105px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-size: 0.875rem; /* 14px */
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 8px 12px; /* Reduced padding */
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover a {
+        color: #333333;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .nav-link {
+        font-size: 1.2rem; /* 假设原始字体大小是1rem，调大25% */
+      }
+
+      .news-margin {
+        margin-bottom: 8px; /* 设置下内边距为10px */
+      }
+
+      .footer-border {
+        border-top-style: double; /* 双线边框 */
+        border-top-width: 4px; /* 边框宽度 */
+        border-top-color: #666; /* 边框颜色 */
+      }
+
+      .header-border {
+        border-bottom-style: double; /* 双线边框 */
+        border-bottom-width: 4px; /* 边框宽度 */
+        border-bottom-color: #666; /* 边框颜色 */
+      }
+
+      .tag-paginator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tag-btn {
+  padding: 5px 10px;;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tag-btn.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.student-works {
+  display: none; /* 初始不显示内容 */
+}
+
+.content-item {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.content-item.active {
+  display: block; /* 显示内容 */
+}
+
+a:hover {
+        font-weight:bolder; color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div style=" position: absolute;top: 80rem;right: 20rem;">
+      <button id="prev-student-works" class="slider-button" style="background-image: url('学生作品\ 上一页.png');"></button>
+      </div>
+ <div class="min-h-screen flex flex-col">
+      <header class="bg-white dark:bg-zinc-800 relative header-border">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+              <div class="flex items-center space-x-4">
+                <img src="logo.png" alt="新Logo" width="60px"> <!-- 新增logo图片 -->
+                <img src="首页logo文字.png" alt="杭州电子科技大学|传播学系" width="400px">
+              </div>
+              <nav class="flex space-x-2 items-center w-full justify-between mt-3">
+                <div class="dropdown">
+                  <a href="专题页.html" class="nav-link">本系概览 ◆</a> <!-- 使用了新的类名nav-link -->
+                </div>
+                <div class="dropdown">
+                  <a href="专题页.html" class="nav-link">新闻动态 ▾</a> <!-- 使用了新的类名nav-link -->
+                  <div class="dropdown-content">
+                    <a href="专题页.html" class="nav-link">新闻资讯</a>
+                    <a href="专题页.html" class="nav-link">通知公告</a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <a href="专题页.html" class="nav-link">师资队伍 ▾</a>
+                  <div class="dropdown-content">
+                    <a href="专题页.html" class="nav-link">教师简介</a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                <a href="专题页.html" class="nav-link">教学内容 ▾</a>
+                <div class="dropdown-content">
+                  <a href="专题页.html" class="nav-link">课程设置</a>
+                  <a href="专题页.html" class="nav-link">理念目标</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <a href="专题页.html" class="nav-link">教学成果 ▾</a>
+                <div class="dropdown-content">
+                  <a href="专题页.html" class="nav-link">学术成就</a>
+                  <a href="专题页.html" class="nav-link">就业发展</a>
+                  <a href="专题页.html" class="nav-link">学生作品</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <a href="专题页.html" class="nav-link">校园生活 ▾</a>
+                <div class="dropdown-content">
+                  <a href="专题页.html" class="nav-link">系内活动</a>
+                  <a href="专题页.html" class="nav-link">师生生活</a>
+              </div>
+              </nav>
+              <div class="absolute top-0 right-16 mt-2 mr-4">
+                <div class="relative">
+                  <input type="text" class="p-1 bg-transparent border-b-2 border-[#666] focus:outline-none box-shadow text-xs h-6 w-64">
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-0 right-8 mt-3 mr-5">
+              <button class="search-button" onclick="window.location.href='搜索页.html'">
+                <img src="搜索.png" alt="搜索标志" width="30px">
+              </button>
+            </div>
+          </header>
+
+      <div class="relative bg-zinc-200 dark:bg-zinc-700 p-6 slider-container">
+        <img src="学院图 大图.png" alt="Promotional Image" class="w-full h-[48rem] object-cover" id="slider-image">
+        <div class="absolute inset-y-0 left-0 w-full flex items-center justify-between">
+            <button id="prev" class="slider-button left-0 w-1/2 h-full" style="background-image: url('上一页.png');"></button>
+            <button id="next" class="slider-button right-0 w-1/2 h-full" style="background-image: url('下一页.png');"></button>
+        </div>
+      </div>
+
+      <div class="flex flex-1 p-10 space-x-10">
+        <div class="flex flex-col space-y-6 w-3/5">
+          <div class="bg-white dark:bg-zinc-800 shadow p-6 flex-1">
+            <img src="新闻动态.png" width="150px" alt="新闻动态" class="mb-6">
+            <img src="媒体元素(3).png" alt="装饰" style="position: absolute; top: 58rem; right: 48rem;" width="100px" class="opacity-60">
+            <a href="专题页.html" style="position: absolute; top: 60rem; right: 46rem; font-size: 16px; color: #666;" >▸更多</a>
+            <div class="space-y-6">
+              <div class="flex space-x-6">
+                <div class="flex justify-between items-end">
+                <img src="学院图 美正育人  人艺数法学院召开教学工作会议.png" width="380px">
+              </div>
+              <div>
+              <div class="news-margin">
+                <p style="color: #666;font-size: 16px;">2024.5.8</p>
+                <p style="color: #333;font-weight:bold;font-size:  20px;display: inline">一流课程研讨会 | </p><p style="color:#333333;font-size: 20px; display: inline">为推动国家一类专业建设，促进……</p>
+                </div>
+                <div class="news-margin">
+                <p style="color: #666;font-size: 16px;">2024.5.6</p>
+                <p style="color: #333;font-weight:bold;font-size:  20px;display: inline">混合型一流课程建设分享 | </p><p style="color:#333333;font-size: 20px; display: inline">4月10日下午，由人文……</p>
+                </div>
+                <div class="news-margin">
+                <p style="color: #666;font-size: 16px;">2024.4.28</p>
+                <p style="color: #333;font-weight:bold;font-size:  20px;display: inline">杭电x黑岩课程教学校企共建研讨会 | </p><p style="color:#333333;font-size: 20px; display: inline">2024年3月……</p>
+                </div>
+                <div class="news-margin">
+                  <p style="color: #666;font-size: 16px;">2024.4.23</p>
+                  <p style="color: #333;font-weight:bold;font-size:  20px;display: inline">“德艺铸大器，勤勇造天才” | </p><p style="color:#333333;font-size: 20px; display: inline">为了提高艺术设计人……</p>
+                  </div>
+                  <div class="news-margin">
+                    <p style="color: #666;font-size: 16px;">2024.4.19</p>
+                    <p style="color: #333;font-weight:bold;font-size:  20px;display: inline">全速网络企业导师走入实训课堂 | </p><p style="color:#333333;font-size: 20px; display: inline">暨今年9月杭电……</p>
+                    </div>
+                  </div>
+                  </div>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-zinc-800 shadow p-6 flex-1">
+            <img src="通知公告.png" alt="通知公告"width="150px" style="position: absolute; top: 87rem; right: 44.5rem;">
+            <ul class="space-y-4">
+              <a href="专题页.html" style="position: absolute; top:98rem; right: 46rem; font-size: 16px; color: #666;" >▸更多</a>
+              <li class="text-zinc-700 dark:text-zinc-300" style="font-size: 20px;">教师通知</li>
+              <div style="margin-left: 70px">
+                <p style="color: #666;font-size: 16px;">2024.4.17</p>
+                 <p style="color:#333333;font-size: 20px; display: inline">杭州电子科技大学新闻与传播学专业硕士考试推荐参考书目</p>
+                </div>
+                <div style="margin-left: 70px">
+                  <p style="color: #666;font-size: 16px;">2024.1.2</p>
+                   <p style="color:#333333;font-size: 20px; display: inline">传播系2023年年终分配公示</p>
+                  </div>
+              <li class="text-zinc-700 dark:text-zinc-300" style="font-size: 20px;">学生通知</li>
+              <a href="专题页.html" style="position: absolute; top:108.5rem; right: 46rem; font-size: 16px; color: #666;" >▸更多</a>
+              <div style="margin-left: 70px">
+                <p style="color: #666;font-size: 16px;">2024.4.11</p>
+                 <p style="color:#333333;font-size: 20px; display: inline">2023-2024学年第一学期优秀学生奖学金公示</p>
+                </div>
+                <div style="margin-left: 70px">
+                  <p style="color: #666;font-size: 16px;">2023.12.5</p>
+                   <p style="color:#333333;font-size: 20px; display: inline">2022-2023学年第二学期优秀学生奖学金公示</p>
+                  </div>
+              <li class="text-zinc-700 dark:text-zinc-300" style="font-size: 20px;">职工通知</li>
+              <a href="专题页.html" style="position: absolute; top:120rem; right: 46rem; font-size: 16px; color: #666;" >▸更多</a>
+              <div style="margin-left: 70px">
+                <p style="color: #666;font-size: 16px;">2024.1.5</p>
+                 <p style="color:#333333;font-size: 20px; display: inline">2023寒假期间轮休安排表</p>
+                </div>
+                <div style="margin-left: 70px">
+                  <p style="color: #666;font-size: 16px;">2023.6.20</p>
+                   <p style="color:#333333;font-size: 20px; display: inline">2023年暑假轮休期间工作内容及工作人员安排汇总表</p>
+                  </div>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-zinc-800 p-6 w-2/5">
+          <img src="学生作品 上一页.png" alt="学生作品 上一页" style="opacity: 30%;position: absolute;top: 90rem; right:34.5rem" width="70px">
+          <img src="学生作品 下一页.png" alt="学生作品 上一页" style="opacity: 30%;position: absolute;top: 90rem; right:4.1rem" width="70px">
+          <img src="媒体元素 (1)-1.png" alt="学生作品"width="690px" style="position: absolute; top: 55rem; right: 0rem; opacity: 80%;">
+          <img src="学生作品.png" alt="学生作品" width="120px" style="position: absolute; top: 62rem; right: 29.5rem;">
+          <div style="position: absolute; top: 65.5rem; right: 18.9rem;">
+            <div class="tag-paginator">
+            <button class="tag-btn active">◈平面设计</button>
+            <button class="tag-btn"> ◈视频作品</button> 
+            <button class="tag-btn"> ◈广播作品</button>
+          </div>
+          </div>
+          <div class="student-work-container">
+          <div>
+          <div class="space-y-6" style="position: absolute;top: 70rem;right: 8rem;">
+            <div class="flex space-x-6">
+              <img src="2014浙江省多媒体设计竞赛获奖作品－平面设计类 奖项： 一等奖 设计： 熊梦霞.jpg" alt="Student Work Image" width="180px">
+              <div>
+                <p style="font-size: 16px; margin-top: 30px;margin-bottom: 8px;">2014浙江省多媒体设计竞赛获奖</p>
+                <p style="font-size: 16px; margin-bottom: 8px">平面设计类 奖项： 一等奖 </p>
+                <p style="font-size: 16px; margin-bottom: 8px">设计人： 熊梦霞</p>
+              </div>
+            </div>
+          </div>
+          <img src="学生作品装饰1.png" alt="学生作品装饰1" width="100px" style="position: absolute;top: 81rem;right: 9rem; opacity: 70%;">
+        </div>
+        <div class="space-y-6" style="position: absolute;top: 95rem;right: 8rem;">
+          <div class="flex space-x-6">
+            <div>
+              <p style="font-size: 16px; margin-top: 30px;margin-bottom: 8px;">2014浙江省多媒体设计竞赛获奖</p>
+              <p style="font-size: 16px; margin-bottom: 8px">平面设计类 奖项： 一等奖 </p>
+              <p style="font-size: 16px; margin-bottom: 8px">设计人： 熊梦霞</p>
+            </div>
+            <img src="创意杭州-2014大学生旅游节获奖作品 奖项： 三等奖设计： 王佳丽.jpg" alt="Student Work Image" width="180px">
+          </div>
+        </div>
+        <img src="学生作品装饰2.png" alt="学生作品装饰2" width="100px" style="position: absolute;top: 105rem;right: 28rem; opacity: 70%;">
+      </div>
+      </div>
+      </div>
+
+      <footer class="bg-white dark:bg-zinc-800 shadow mt-8 footer-border" style="height: 160px;">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-8">
+          <div class="flex items-center space-x-4">
+            <div style="position: absolute;top: 131rem; left: 14rem;">
+            <img src="传播系网站.png" alt="QR Code" class="w-24 h-24">
+            <p style="font-size: 14px;">杭电传播公众号</p>
+          </div>
+        </div>
+        <div style="position: absolute;top: 131.2rem; left: 30rem;">
+          <p>联系我们</p>
+          <p>地址：杭州市钱塘区白杨街道2号大街1158号</p>
+          <p>电话：0571-86878505</p>
+          <p>邮箱：xwcb@hdu.edu.cn</p>
+        </div>
+        <div style="position: absolute;top: 131.2rem; left: 60rem;">
+          <p>相关链接</p>
+          <a href="https://www.hdu.edu.cn/main.htm">杭州电子科技大学</a><br>
+          <a href="https://syxy.hdu.edu.cn/main.htm">人文艺术与数字媒体学院</a>
+        </div>
+        <div>
+          <a href="意见反馈页.html" style="position: absolute;top: 131.2rem; left: 92rem; font-weight:bold;">▸意见反馈通道</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var images = ['学院图 大图.png', '大图 2.jpg', '图 3.png']; // 替换为您的图片URL
+      var currentImageIndex = 0;
+      var sliderImage = document.getElementById('slider-image');
+      var prevButton = document.getElementById('prev');
+      var nextButton = document.getElementById('next');
+      var autoSlideInterval = 10000; // 自动切换间隔时间，单位为毫秒
+      var fadeDuration = 300; // 淡入淡出动画持续时间，单位为毫秒
+
+      // 显示当前图片
+      function displayImage() {
+        sliderImage.src = images[currentImageIndex];
+        sliderImage.style.opacity = 0;
+        setTimeout(function() {
+          sliderImage.style.opacity = 1;
+        }, 10); // 设置延迟以确保浏览器有机会应用新的src属性
+      }
+
+      // 切换到下一张图片
+      function nextImage() {
+        sliderImage.style.opacity = 0; // 将当前图片淡出
+        setTimeout(function() {
+          currentImageIndex++;
+          if (currentImageIndex >= images.length) {
+            currentImageIndex = 0;
+          }
+          displayImage(); // 显示下一张图片
+        }, fadeDuration); // 在淡出完成后切换图片
+      }
+
+      // 切换到上一张图片
+      function prevImage() {
+        sliderImage.style.opacity = 0; // 将当前图片淡出
+        setTimeout(function() {
+          currentImageIndex--;
+          if (currentImageIndex < 0) {
+            currentImageIndex = images.length - 1;
+          }
+          displayImage(); // 显示上一张图片
+        }, fadeDuration); // 在淡出完成后切换图片
+      }
+
+      // 点击切换图片
+      prevButton.addEventListener('click', prevImage);
+      nextButton.addEventListener('click', nextImage);
+
+      // 自动切换图片
+      setInterval(nextImage, autoSlideInterval);
+
+      // 初始化轮播图
+      displayImage();
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+  var tagButtons = document.querySelectorAll('.tag-btn');
+  var contentItems = document.querySelectorAll('.content-item');
+
+  tagButtons.forEach(function(button, index) {
+    button.addEventListener('click', function() {
+      var currentActiveTag = document.querySelector('.tag-btn.active');
+      currentActiveTag.classList.remove('active');
+      this.classList.add('active');
+
+      var currentActiveContent = document.querySelector('.content-item.active');
+      currentActiveContent.classList.remove('active');
+      contentItems[index].classList.add('active');
+    });
+  });
+});
+  </script>
+  </body>
+</html>
